@@ -10,7 +10,7 @@ class Vehicle {
     }
 
     toString() {
-        return "The vehicle is a " + make + " " + model + " from " + year + "."; 
+        return "The vehicle is a " + this.make + " " + this.model + " from " + this.year + "."; 
     }
 
     isVehicle() {
@@ -20,8 +20,8 @@ class Vehicle {
 
 class Car extends Vehicle {
     constructor(make, model, year) {
-        this.numWheels = 4;
         super(make, model, year);
+        this.numWheels = 4;
     }
 
 
@@ -29,8 +29,8 @@ class Car extends Vehicle {
 
 class Motorcycle extends Vehicle {
     constructor(make, model, year) {
-        this.numWheels = 2;
         super(make, model, year);
+        this.numWheels = 2;
     }
 
     revEngine() {
@@ -45,16 +45,17 @@ class Garage {
     }
 
     add(vehicle) {
-        if (vehicle.isVehicle()) {
+        console.log(vehicle instanceof Vehicle);
+        if (vehicle instanceof Vehicle) {
 
-            if (this.vehicles.length < capacity) {
+            if (this.vehicles.length < this.capacity) {
                 this.vehicles.push(vehicle);
                 return "Vehicle Added!";
             }
             else {
                 return "Sorry, we're full."
             }
-            
+
         }
         else {
             return "Only vehicles are allowed in here!"
